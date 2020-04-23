@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление книги</h1>
+<form class="login_form" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <p>
+        {{ form.author.label }}<br>
+        {{ form.author(class="form-control") }}<br>
+        {% for error in form.author.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(class="form-control") }}<br>
+        {% for error in form.title.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+        <p>
+        {{ form.genre.label }}<br>
+        {{ form.genre(class="form-control") }}<br>
+        {% for error in form.genre.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.price.label }}<br>
+        {{ form.price(class="form-control") }}<br>
+        {% for error in form.price.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.date.label }}<br>
+        {{ form.date(class="form-control") }}<br>
+        {% for error in form.date.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <input type="file" class="form-control-file" id="photo" name="file">
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+    </div>
+</form>
+{% endblock %}
